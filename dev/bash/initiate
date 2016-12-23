@@ -2,7 +2,7 @@
 
 for (( rs = 1; rs < 3; rs++ )); do
   echo "Intializing replica ${rs} set"
-  replicate="rs.initiate(); sleep(1000); cfg = rs.conf(); cfg.members[0].host = \"mongodockercompose_mongors${rs}n1_1\"; rs.reconfig(cfg); rs.add(\"mongodockercompose_mongors${rs}n2_1\"); rs.add(\"mongodockercompose_mongors${rs}n3_1\"); rs.status();"
+  replicate="rs.initiate(); sleep(1000); cfg = rs.conf(); cfg.members[0].host = \"replicatSet_${rs}_shard_1\"; rs.reconfig(cfg); rs.add(\"mongodockercompose_mongors${rs}n2_1\"); rs.add(\"mongodockercompose_mongors${rs}n3_1\"); rs.status();"
   docker exec -it mongodockercompose_mongors${rs}n1_1 bash -c "echo '${replicate}' | mongo"
 done
 
