@@ -2,7 +2,7 @@ version: '2'
 services:
   mongos_1:
     image: daocloud.io/library/mongo:3.2.4
-#    command: mongos --configdb shard_1_replSet/mongo_cfg_1:27017,mongo_cfg_2:27017,mongo_cfg_3:27017
+    command: mongos --configdb shard_1_replSet/mongo_cfg_1:27017,mongo_cfg_2:27017,mongo_cfg_3:27017
     environment:
       TERM: xterm
     ports:
@@ -10,20 +10,20 @@ services:
     container_name: mongos_1
   mongos_2:
     image: daocloud.io/library/mongo:3.2.4
-#    command: mongos --configdb shard_2_replSet/mongo_cfg_1:27017,mongo_cfg_2:27017,mongo_cfg_3:27017
+    command: mongos --configdb shard_2_replSet/mongo_cfg_1:27017,mongo_cfg_2:27017,mongo_cfg_3:27017
     environment:
       TERM: xterm
     ports:
       - 27018:27017
     container_name: mongos_2
-  mongos_3:
-      image: daocloud.io/library/mongo:3.2.4
-#      command: mongos --configdb shard_3_replSet/mongo_cfg_1:27017,mongo_cfg_2:27017,mongo_cfg_3:27017
-      environment:
-        TERM: xterm
-      ports:
-        - 27019:27017
-      container_name: mongos_3
+#  mongos_3:
+#      image: daocloud.io/library/mongo:3.2.4
+##      command: mongos --configdb shard_3_replSet/mongo_cfg_1:27017,mongo_cfg_2:27017,mongo_cfg_3:27017
+#      environment:
+#        TERM: xterm
+#      ports:
+#        - 27019:27017
+#      container_name: mongos_3
 
 networks:
   default:
