@@ -28,3 +28,15 @@
     environment:
       TERM: xterm
     container_name:  shard_2_replSet_2
+  shard_3_replSet_1:
+    image: daocloud.io/library/mongo:3.2.4
+    command: mongod --noprealloc --smallfiles --replSet shard_3_replSet --dbpath /data/db --nojournal --oplogSize 16 --noauth
+    environment:
+      TERM: xterm
+    container_name:  shard_3_replSet_1
+  shard_3_replSet_2:
+    image: daocloud.io/library/mongo:3.2.4
+    command: mongod --noprealloc --smallfiles --replSet shard_3_replSet --dbpath /data/db --nojournal --oplogSize 16 --noauth
+    environment:
+      TERM: xterm
+    container_name:  shard_3_replSet_2

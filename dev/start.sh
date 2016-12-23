@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
-docker-compose -f servers.yml up -d
-sleep 2
 echo "run mongo instance"
+docker-compose -f servers.yml up -d
+sleep 3
+echo "run config servers and init replicaSet"
 docker-compose -f configs.yml up -d
-echo "run config servers"
-sleep 10
+sleep 3
 ./bash/configReplSet.sh
-echo "collect instance and setup replicaSet"
-docker-compose -f mongos.yml up -d
 echo "run mongos servers"
-sleep 10
+docker-compose -f mongos.yml up -d
+sleep 3
 ./bash/addShard.sh
 echo "add shardings "
