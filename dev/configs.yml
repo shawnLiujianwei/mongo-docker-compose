@@ -12,7 +12,12 @@ services:
     environment:
       TERM: xterm
     container_name: mongo_cfg_2
-
+  mongo_cfg_3:
+      image: daocloud.io/library/mongo:3.2.4
+      command: mongod --noprealloc --smallfiles --dbpath /data/db --configsvr --noauth --port 27017
+      environment:
+        TERM: xterm
+      container_name: mongo_cfg_3
 networks:
   default:
     external:
