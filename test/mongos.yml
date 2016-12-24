@@ -1,0 +1,23 @@
+version: '2'
+services:
+  server1_mongos:
+    image: daocloud.io/library/mongo:3.2.4
+    command: mongos --configdb shard1/server1_mongo_cfg:27017,server2_mongo_cfg:27017,server3_mongo_cfg:27017 --port 27017
+    environment:
+      TERM: xterm
+    ports:
+      - 27017:27017
+    container_name: server1_mongos
+  server2_mongos:
+    image: daocloud.io/library/mongo:3.2.4
+    command: mongos --configdb shard2/server1_mongo_cfg:27017,server2_mongo_cfg:27017,server3_mongo_cfg:27017 --port 27017
+    environment:
+      TERM: xterm
+    ports:
+      - 27018:27017
+    container_name: server2_mongos
+
+networks:
+  default:
+    external:
+      name: o2o-mongo-shard

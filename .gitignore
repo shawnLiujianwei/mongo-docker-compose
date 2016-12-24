@@ -1,2 +1,6 @@
-/dev/data
+/test/data
 .idea
+mongo0
+mongo1
+mongo2
+node_modules

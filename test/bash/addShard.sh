@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker exec -it server1_mongos bash -c "echo \"sh.addShard('shard1/server1_shard1:27017,server2_shard1:27017'); sh.addShard('shard2/server1_shard2:27017,server2_shard2');\" | mongo "

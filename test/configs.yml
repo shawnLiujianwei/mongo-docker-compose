@@ -1,0 +1,26 @@
+version: '2'
+services:
+
+  server1_mongo_cfg:
+    image: daocloud.io/library/mongo:3.2.4
+    command: mongod --noprealloc --smallfiles --dbpath /data/db --configsvr --noauth --port 27017
+    environment:
+      TERM: xterm
+    container_name: server1_mongo_cfg
+  server2_cfg:
+    image: daocloud.io/library/mongo:3.2.4
+    command: mongod --noprealloc --smallfiles --dbpath /data/db --configsvr --noauth --port 27017
+    environment:
+      TERM: xterm
+    container_name: server2_mongo_cfg
+  server3_cfg:
+    image: daocloud.io/library/mongo:3.2.4
+    command: mongod --noprealloc --smallfiles --dbpath /data/db --configsvr --noauth --port 27017
+    environment:
+      TERM: xterm
+    container_name: server3_mongo_cfg
+
+networks:
+  default:
+    external:
+      name: o2o-mongo-shard

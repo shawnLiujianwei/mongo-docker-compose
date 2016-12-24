@@ -1,0 +1,22 @@
+ version: '2'
+ services:
+ # server1_shard1 , server1_shard2  模拟一台物理机器的两个分片
+
+  mongo11:
+    image: mesoshq/mongodb-replicaset
+#    command: mongod  --replSet shard1 --dbpath /data/db  --port 27017
+    environment:
+      TERM: xterm
+      REPLICA_SET: shard1
+    ports:
+      - 10000:27017
+    container_name:  mongo11
+  mongo21:
+    image: mesoshq/mongodb-replicaset
+#    command: mongod   --replSet shard1 --dbpath /data/db  --port 27017
+    ports:
+      - 20000:27017
+    environment:
+      TERM: xterm
+      REPLICA_SET: shard1
+    container_name:  mongo21
